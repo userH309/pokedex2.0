@@ -1,7 +1,6 @@
 import UIKit
 
-class pokemonDetailsVC: UIViewController
-{
+class pokemonDetailsVC: UIViewController {
     var pokemon:pokemon!
     @IBOutlet weak var pokemonNameLbl: UILabel!
     @IBOutlet weak var pokeIMG: UIImageView!
@@ -16,18 +15,16 @@ class pokemonDetailsVC: UIViewController
     @IBOutlet weak var pokeEvoIMG2: UIImageView!
     @IBOutlet weak var pokeEvoIMG3: UIImageView!
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
         pokemonNameLbl.text = pokemon.name.capitalized
-        pokemon.downloadPokemonDetails //will be called after network call is complete
-        {
+        //Download pokemon data.
+        pokemon.downloadPokemonDetails {
             self.updateUI()
         }
     }
     
-    func updateUI()
-    {
+    func updateUI() {
         pokeAttack.text = pokemon.attack
         pokeDefence.text = pokemon.defence
         pokeHeight.text = pokemon.height
@@ -41,8 +38,7 @@ class pokemonDetailsVC: UIViewController
         pokeEvoIMG3.image = UIImage(named: "\(pokemon.thirdEvo)")
     }
     
-    @IBAction func backBtnPressed(_ sender: UIButton)
-    {
+    @IBAction func backBtnPressed(_ sender: UIButton) {
         dismiss(animated: false, completion: nil)
     }
 }
